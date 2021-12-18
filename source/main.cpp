@@ -17,9 +17,9 @@ public: //data to be stored in squares
     char playerPiece = '*';
     char playerPiece2 = '$';
     char defaultIcon = '0'; //show this if there is no player in the square
-    int rent = 5;
-    int buy = 100;
-    int rentOnceBought = 50;
+    int rent = 5; //non essential
+    int buy = 100; //non essential
+    int rentOnceBought = 50; //non essential
 
     Square()
     { //constructor
@@ -35,21 +35,21 @@ public: //stores how much money players have and where they are on the board
 
     Player()
     { //constructor
-        money = 500;
+        money = 500; //players start in the first square, with $500
         boardPosition = 0;
     }
 
     int getMoney() //returns how much money player has
-    {
+    { 
         return money;
     }
 
-    void addMoney(int dollars) //add money
-    {
+    void addMoney(int dollars) //add money (Non essential)
+    { 
         money += dollars;
     }
 
-    void subtractMoney(int dollars) //subtract money
+    void subtractMoney(int dollars) //subtract money (Non essential)
     {
         money -= dollars;
     }
@@ -67,17 +67,17 @@ public: //stores how much money players have and where they are on the board
 int main()
 {
 
-    string player1;
+    string player1; //stores player names
     string player2;
 
-    cout << "Welcome to Monoploy, enter name player 1: ";
+    cout << "Welcome to Monoploy, enter name player 1: "; //players enter names
     cin >> player1;
     cout << endl;
     cout << "Enter name player 2: ";
     cin >> player2;
     cout << endl;
-    cout << player1 << " is * " << endl;
-    cout << player2 << " is $ " << endl;
+    cout << player1 << " is player 1, represented by a * " << endl; //"*" and "$" symbols represent players
+    cout << player2 << " is player 2, represented by a $ " << endl;
 
 
     Player P1; //create two players from the class
@@ -104,13 +104,13 @@ int main()
     int x_axis[16] = {4, 3, 2, 1, 0, 0, 0, 0, 0, 1, 2, 3, 4, 4, 4, 4};                     //array for x axis values
     int y_axis[16] = {0, 0, 0, 0, 0, 1, 2, 3, 4, 4, 4, 4, 4, 3, 2, 1};                     //array for y axis values
 
-    char display[5][5] = {'*'};
+    char display[5][5] = {'*'}; //creates 2d array that's values will be updated later
 
-    int userInput = 0;
-    int lastPosition1 = 0; //variable to store last position
-    int lastPosition2 = 0;
+    int userInput = 0; 
+    int lastPosition1 = 0; //variable to store last position for player one
+    int lastPosition2 = 0; //for player 2
 
-    display[x_axis[0]][y_axis[0]] = array[0].playerPiece;
+    display[x_axis[0]][y_axis[0]] = array[0].playerPiece; //player starts on square one
 
     while (userInput < 6)
     {
@@ -144,14 +144,12 @@ int main()
                     display[x_axis[lastPosition1]][y_axis[lastPosition1]] = array[i].defaultIcon; //use last postition to index
                 }
 
-//
-               
-//
                 lastPosition1 = currentPosition1;
             }
             if (P1.money <= 0) //checks if player 1 is bankrupt
             {
                 cout << player1 << " is bankrupt, " << player2 << " wins! ";
+                break;
             }
 
             //repeat everything for player 2
@@ -165,14 +163,12 @@ int main()
                 display[x_axis[lastPosition2]][y_axis[lastPosition2]] = array[i].defaultIcon; //use last postition to index
             }
 
-//
-           
-//
             lastPosition2 = currentPosition2;
         }
         if (P2.money <= 0) //checks if player 2 is bankrupt
         {
             cout << player2 << " is bankrupt, " << player1 << " wins! ";
+            break;
         }
 
         for (int i = 0; i < 5; i++) //loop to print out the board
@@ -184,6 +180,6 @@ int main()
             cout << endl;
         }
     }
-}
+} //end main function
 
 
